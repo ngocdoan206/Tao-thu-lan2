@@ -1,112 +1,154 @@
-﻿using System;
-public class BaiTapNangCaoKieuDuLieu
+﻿public class Program
 {
     public static void Main(string[] args)
     {
-        Console.Write("Nhap ban kinh hinh cau: ");
-        double r = Convert.ToDouble(Console.ReadLine());
-        DienTichBeMatVaTheTich(r);
-
-        Console.Write("Nhap so thu nhat: ");
-        int so1 = Convert.ToInt32(Console.ReadLine());
-        Console.Write("Nhap so thu hai: ");
-        int so2 = Convert.ToInt32(Console.ReadLine());
-        ToanTu(so1, so2);
-
-        XuLyNgoaiLe();
-        XuLyHonHopDuLieu();
-        PhanLoaiDuLieu();
+        Console.WriteLine("1.Add / Sum Two Numbers");
+        SumTwoNumbers();
+        Console.WriteLine("2.to Swap Values of Two Variables");
+        SwapValues();
+        Console.WriteLine("3.to Multiply two Floating Point Numbers");
+        MultiplyFloats();
+        Console.WriteLine("4.to convert feet to meter");
+        ConvertFeetToMeter();
+        Console.WriteLine("5.to convert Celsius to Fahrenheit and vice versa");
+        TempConversion();
+        Console.WriteLine("6.to find the Size of data types");
+        FindSizeOfDataTypes();
+        Console.WriteLine("7.to Print ASCII Value (tip: read character, print number of this char)");
+        PrintASCIIValue();
+        Console.WriteLine("8.to Calculate Area of Circle");
+        AreaCircle();
+        Console.WriteLine("9.to Calculate Area of Square");
+        AreaSquare();
+        Console.WriteLine("10.to convert days to years, weeks and days");
+        DaysConversion();
     }
 
-    public static void DienTichBeMatVaTheTich(double r)
+    // 1. Add / Sum Two Numbers.
+    public static void SumTwoNumbers()
     {
-        double pi = 3.14;
-        double surface = 4 * pi * r * r;
-        double volume = 4 / 3 * pi * r * r * r;
+        Console.Write("Enter first number: ");
+        double num1 = Convert.ToDouble(Console.ReadLine());
 
-        Console.WriteLine($"surface = {surface}");
-        Console.WriteLine($"volume = {volume}");
+        Console.Write("Enter second number: ");
+        double num2 = Convert.ToDouble(Console.ReadLine());
+
+        double sum = num1 + num2;
+        Console.WriteLine("Sum: " + sum);
         Console.ReadLine();
     }
 
-    public static void ToanTu(int so1, int so2)
+    //2. to Swap Values of Two Variables.
+    public static void SwapValues()
     {
-        int sum = so1 + so2;
-        int sub = so1 - so2;
-        int mul = so1 * so2;
-        int div = so1 / so2;
-        int mod = so1 % so2;
+        Console.Write("Enter first number: ");
+        double num1 = Convert.ToDouble(Console.ReadLine());
 
-        Console.WriteLine($"{so1} + {so2} = {sum}");
-        Console.WriteLine($"{so1} - {so2} = {sub}");
-        Console.WriteLine($"{so1} * {so2} = {mul}");
-        Console.WriteLine($"{so1} / {so2} = {div}");
-        Console.WriteLine($"{so1} mod {so2} = {mod}");
+        Console.Write("Enter second number: ");
+        double num2 = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Before swap values: \n firstNumber: " + num1 + "\n secondNumber: " + num2);
+
+        double temp = num1;
+        num1 = num2;
+        num2 = temp;
+
+        Console.WriteLine("After swap values: \n firstNumber: " + num1 + "\n secondNumber: " + num2);
         Console.ReadLine();
     }
 
-    public static void XuLyNgoaiLe()
+    //3. to Multiply two Floating Point Numbers.
+    public static void MultiplyFloats()
     {
-        Console.Write("Nhap mot chuoi: ");
-        string input = Console.ReadLine();
+        Console.Write("Enter first number: ");
+        float num1 = Convert.ToSingle(Console.ReadLine());
 
-        try
-        {
-            int number = int.Parse(input);
-            Console.WriteLine($"Gia tri sau khi ep kieu: {number}");
-        }
-        catch (FormatException)
-        {
-            Console.WriteLine("Loi: Chuoi khong hop le, khong the ep kieu sang int.");
-        }
+        Console.Write("Enter second number: ");
+        float num2 = Convert.ToSingle(Console.ReadLine());
+
+        float product = num1 * num2;
+        Console.WriteLine("Product: " + product);
         Console.ReadLine();
     }
 
-    public static void XuLyHonHopDuLieu()
+    //4. to convert feet to meter.
+    public static void ConvertFeetToMeter()
     {
-        Console.Write("Nhap gia tri thu nhat: ");
-        string input1 = Console.ReadLine();
+        Console.Write("Enter length in feet: ");
+        double feet = Convert.ToDouble(Console.ReadLine());
 
-        Console.Write("Nhap gia tri thu hai: ");
-        string input2 = Console.ReadLine();
-
-        if (double.TryParse(input1, out double num1) && double.TryParse(input2, out double num2))
-        {
-            Console.WriteLine($"{num1} + {num2} = {num1 + num2}");
-            Console.WriteLine($"{num1} - {num2} = {num1 - num2}");
-            Console.WriteLine($"{num1} * {num2} = {num1 * num2}");
-            if (num2 != 0)
-                Console.WriteLine($"{num1} / {num2} = {num1 / num2}");
-            else
-                Console.WriteLine("Khong the chia cho 0.");
-        }
-        else
-        {
-            Console.WriteLine("Du lieu nhap vao khong hop le (khong phai so).");
-        }
+        double meters = feet * 0.3048;
+        Console.WriteLine($"{feet} feet is equal to {meters} meters.");
         Console.ReadLine();
     }
 
-    public static void PhanLoaiDuLieu()
+    //5. to convert Celsius to Fahrenheit and vice versa.
+    public static void TempConversion()
     {
-        Console.Write("Nhap du lieu: ");
-        string input = Console.ReadLine();
+        Console.Write("Enter temperature: ");
+        double temp = Convert.ToDouble(Console.ReadLine());
 
-        if (int.TryParse(input, out int i))
-        {
-            Console.WriteLine("So nguyen");
-        }
-        else if (double.TryParse(input, out double d))
-        {
-            Console.WriteLine("So thuc");
-        }
-        else if (bool.TryParse(input, out bool b))
-        {
-            Console.WriteLine("Boolean");
-        }
-        else
-        {
-            Console.WriteLine("Chuoi ky tu");
-        }
+        double f = (temp * 9 / 5) + 32;
+        Console.WriteLine($"{temp}°C = {f}°F");
+
+        double c = (temp - 32) * 5 / 9;
+        Console.WriteLine($"{temp}°F = {c}°C");
+        Console.ReadLine();
+    }
+
+    //6. to find the Size of data types
+    public static void FindSizeOfDataTypes()
+    {
+        Console.WriteLine("Size of int: " + sizeof(int) + " bytes");
+        Console.WriteLine("Size of float: " + sizeof(float) + " bytes");
+        Console.WriteLine("Size of double: " + sizeof(double) + " bytes");
+        Console.WriteLine("Size of char: " + sizeof(char) + " bytes");
+        Console.WriteLine("Size of bool: " + sizeof(bool) + " bytes");
+        Console.ReadLine();
+    }
+
+    //7. to Print ASCII Value (tip: read character, print number of this char)
+    public static void PrintASCIIValue()
+    {
+        Console.Write("Enter a character: ");
+        char ch = Console.ReadKey().KeyChar;
+
+        int asciiValue = (int)ch;
+        Console.WriteLine($"\nThe ASCII value of '{ch}' is {asciiValue}.");
+        Console.ReadLine();
+    }
+
+    //8. to Calculate Area of Circle
+    public static void AreaCircle()
+    {
+        Console.Write("Enter radius of circle: ");
+        double radius = Convert.ToDouble(Console.ReadLine());
+
+        double area = Math.PI * radius * radius;
+        Console.WriteLine($"Area = {area}");
+        Console.ReadLine();
+    }
+
+    //9. to Calculate Area of Square
+    public static void AreaSquare()
+    {
+        Console.Write("Enter side length of square: ");
+        double side = Convert.ToDouble(Console.ReadLine());
+
+        double area = side * side;
+        Console.WriteLine($"Area = {area}");
+        Console.ReadLine();
+    }
+
+    //10. to convert days to years, weeks and days
+    public static void DaysConversion()
+    {
+        Console.Write("Enter number of days: ");
+        int days = Convert.ToInt32(Console.ReadLine());
+
+        int years = days / 365;
+        int weeks = (days % 365) / 7;
+        int remainingDays = (days % 365) % 7;
+
+        Console.WriteLine($"{days} days = {years} years, {weeks} weeks, {remainingDays} days");
     }
 }
